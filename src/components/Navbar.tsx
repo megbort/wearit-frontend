@@ -17,6 +17,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import CircularProgress from '@mui/material/CircularProgress';
+import Badge from '@mui/material/Badge';
 import theme from '../theme/theme';
 import { ThemeProvider } from '@emotion/react';
 import CartDrawer from './CartDrawer';
@@ -41,6 +42,9 @@ export default function Navbar() {
   const isAuthenticated = useStore((state) => state.isAuthenticated);
   const isLoading = useStore((state) => state.isLoading);
   const setNotification = useStore((state) => state.setNotification);
+  const cartCount = useStore((state) =>
+    state.cart.reduce((sum, item) => sum + item.quantity, 0)
+  );
   const { logout } = useLogout();
 
   const { resolvedTheme, setTheme } = useTheme();
@@ -86,7 +90,7 @@ export default function Navbar() {
                 src="wearit/wearit-logo-v3_cj1le4.png"
                 alt={t('logoAlt')}
                 width={200}
-                height={200}
+                height={50}
                 priority
                 style={{ height: 'auto' }}
               />
@@ -101,6 +105,18 @@ export default function Navbar() {
                 style={{ fontSize: '20px' }}
                 className="text-wearit-red hover:text-wearit-green"
               />
+            </Button>
+            <Button onClick={handleCartOpen} aria-label="Open cart">
+              <Badge
+                badgeContent={cartCount}
+                sx={{ '& .MuiBadge-badge': { backgroundColor: '#0070f3', color: '#fff' } }}
+              >
+                <FontAwesomeIcon
+                  icon={faCartShopping}
+                  style={{ fontSize: '20px' }}
+                  className="text-wearit-red hover:text-wearit-green"
+                />
+              </Badge>
             </Button>
             <Button
               id="menu-button"
@@ -254,12 +270,17 @@ export default function Navbar() {
                     </MenuItem>,
                   ]}
             </Menu>
-            <FontAwesomeIcon
-              icon={faCartShopping}
-              style={{ fontSize: '22px' }}
-              className="text-wearit-red hover:text-wearit-green hover:cursor-pointer"
-              onClick={handleCartOpen}
-            />
+            <Badge
+              badgeContent={cartCount}
+              sx={{ '& .MuiBadge-badge': { backgroundColor: '#0070f3', color: '#fff' } }}
+            >
+              <FontAwesomeIcon
+                icon={faCartShopping}
+                style={{ fontSize: '22px' }}
+                className="text-wearit-red hover:text-wearit-green hover:cursor-pointer"
+                onClick={handleCartOpen}
+              />
+            </Badge>
           </div>
         </nav>
 

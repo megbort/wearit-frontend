@@ -10,6 +10,12 @@ export const LOGIN_MUTATION = gql`
         firstName
         lastName
         email
+        cart {
+          productId
+          size
+          color
+          quantity
+        }
       }
     }
   }
@@ -23,6 +29,12 @@ export const GET_ME_QUERY = gql`
       firstName
       lastName
       email
+      cart {
+        productId
+        size
+        color
+        quantity
+      }
     }
   }
 `;
@@ -37,6 +49,12 @@ export const REFRESH_TOKEN_MUTATION = gql`
         firstName
         lastName
         email
+        cart {
+          productId
+          size
+          color
+          quantity
+        }
       }
     }
   }
@@ -49,7 +67,7 @@ export const LOGOUT_MUTATION = gql`
   }
 `;
 
-// Register mutation (for future use)
+// Register mutation
 export const REGISTER_MUTATION = gql`
   mutation Register(
     $email: String!
@@ -69,6 +87,12 @@ export const REGISTER_MUTATION = gql`
         firstName
         lastName
         email
+        cart {
+          productId
+          size
+          color
+          quantity
+        }
       }
     }
   }

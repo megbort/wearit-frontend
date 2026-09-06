@@ -17,7 +17,8 @@
     "discount": "Discount",
     "total": "Total",
     "checkout": "Proceed to Checkout",
-    "taxNote": "Taxes and shipping calculated at checkout"
+    "taxNote": "Taxes and shipping calculated at checkout",
+    "remove": "remove"
   },
   "Featured": {
     "heading": "New Featured Items ✨",
@@ -75,6 +76,7 @@
     "notFound": "Product not found",
     "sale": "Sale",
     "addToCart": "Add to Cart",
+    "addedToCart": "Added to cart",
     "sizeChart": "Size Chart",
     "details": "Details:",
     "youMightLike": "You might like some of these"

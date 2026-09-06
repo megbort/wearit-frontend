@@ -1,5 +1,4 @@
-import BoxSelect from '@/components/ui/BoxSelect';
-import CustomButton from '@/components/ui/Button';
+import ProductAddToCart from '@/components/ProductAddToCart';
 import Image from 'next/image';
 import ProductSlider from '@/components/ui/ProductSlider';
 import { getTranslations } from 'next-intl/server';
@@ -38,24 +37,6 @@ export default async function Product(props: any) {
   if (!product) {
     return <div>{t('notFound')}</div>;
   }
-
-  const colorSelect = {
-    title: 'Color',
-    boxSize: 75,
-    items: product.colors.map((color, index) => ({
-      value: color.charAt(0).toUpperCase() + color.slice(1),
-      selected: index === 0,
-    })),
-  };
-
-  const sizeSelect = {
-    title: 'Size',
-    boxSize: 40,
-    items: product.sizes.map((size, index) => ({
-      value: size.toUpperCase(),
-      selected: index === 0,
-    })),
-  };
 
   return (
     <div className="pt-12">
@@ -99,11 +80,7 @@ export default async function Product(props: any) {
           ) : (
             <p className="subtitle-1 text-neutral-500">${product.price}</p>
           )}
-          <BoxSelect {...colorSelect} />
-          <BoxSelect {...sizeSelect} />
-          <div className="max-[250px]">
-            <CustomButton variant="primary">{t('addToCart')}</CustomButton>
-          </div>
+          <ProductAddToCart product={product} />
           <p className="text-caption underline hover:cursor-pointer hover:text-wearit-red">
             {t('sizeChart')}
           </p>

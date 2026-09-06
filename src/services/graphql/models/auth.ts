@@ -1,3 +1,5 @@
+import type { RawCartItem } from './cart';
+
 export interface User {
   id: string;
   firstName: string;
@@ -5,28 +7,30 @@ export interface User {
   email: string;
 }
 
+type UserWithCart = User & { cart: RawCartItem[] };
+
 export interface LoginResponse {
   login: {
     token: string;
-    user: User;
+    user: UserWithCart;
   };
 }
 
 export interface RegisterResponse {
   register: {
     token: string;
-    user: User;
+    user: UserWithCart;
   };
 }
 
 export interface MeResponse {
-  me: User;
+  me: UserWithCart;
 }
 
 export interface RefreshTokenResponse {
   refreshToken: {
     token: string;
-    user: User;
+    user: UserWithCart;
   };
 }
 

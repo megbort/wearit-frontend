@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { Product } from '@/services/models/product';
+import type { CartItem } from '@/services/models/cart';
 
 interface User {
   id: string;
@@ -15,79 +16,101 @@ interface Notification {
 }
 
 interface StoreState {
-  // Cart/Shopping state
-  count: number;
-  increaseCount: () => void;
-  resetCount: () => void;
+  cart: CartItem[];
+  setCart: (cart: CartItem[]) => void;
+  addItem: (item: Omit<CartItem, 'quantity'>, quantity?: number) => void;
+  removeItem: (productId: string, size: string, color: string) => void;
+  updateQuantity: (
+    productId: string,
+    size: string,
+    color: string,
+    quantity: number,
+  ) => void;
+  clearCart: () => void;
 
-  // Authentication state (access token lives in memory in the Apollo client)
   user: User | null;
   isAuthenticated: boolean;
   isLoading: boolean;
 
-  // Authentication actions
   setUser: (user: User) => void;
   login: (user: User) => void;
   logout: () => void;
   setLoading: (loading: boolean) => void;
 
-  // Notification state
   notification: Notification | null;
   setNotification: (notification: Notification) => void;
   clearNotification: () => void;
 
-  // Product catalogue (in-memory cache, not persisted)
   products: Product[];
   setProducts: (products: Product[]) => void;
 }
 
+// Matches the backend's addToCart identity rule
+const sameLine = (
+  a: { productId: string; size: string; color: string },
+  b: typeof a,
+) => a.productId === b.productId && a.size === b.size && a.color === b.color;
+
 const useStore = create<StoreState>()(
   persist(
     (set, get) => ({
-      // Cart/Shopping state
-      count: 0,
-      increaseCount: () => set((state) => ({ count: state.count + 1 })),
-      resetCount: () => set({ count: 0 }),
+      cart: [],
+      setCart: (cart) => set({ cart }),
+      addItem: (item, quantity = 1) =>
+        set((state) => {
+          const existing = state.cart.some((line) => sameLine(line, item));
+          if (existing) {
+            return {
+              cart: state.cart.map((line) =>
+                sameLine(line, item)
+                  ? { ...line, quantity: line.quantity + quantity }
+                  : line,
+              ),
+            };
+          }
+          return { cart: [...state.cart, { ...item, quantity }] };
+        }),
+      removeItem: (productId, size, color) =>
+        set((state) => ({
+          cart: state.cart.filter(
+            (line) => !sameLine(line, { productId, size, color }),
+          ),
+        })),
+      updateQuantity: (productId, size, color, quantity) =>
+        set((state) => ({
+          cart: state.cart.map((line) =>
+            sameLine(line, { productId, size, color })
+              ? { ...line, quantity }
+              : line,
+          ),
+        })),
+      clearCart: () => set({ cart: [] }),
 
-      // Authentication state
       user: null,
       isAuthenticated: false,
       isLoading: false,
 
-      // Authentication actions
       setUser: (user) => set({ user, isAuthenticated: true }),
       login: (user) => set({ user, isAuthenticated: true }),
-      logout: () => set({ user: null, isAuthenticated: false }),
+      logout: () => set({ user: null, isAuthenticated: false, cart: [] }),
       setLoading: (loading) => set({ isLoading: loading }),
 
-      // Notification actions
       notification: null,
       setNotification: (notification) => set({ notification }),
       clearNotification: () => set({ notification: null }),
 
-      // Product catalogue
       products: [],
       setProducts: (products) => set({ products }),
     }),
     {
       name: 'app-storage',
-      version: 1,
-      // v0 persisted the access token; it now lives in memory only
-      migrate: (persistedState) => {
-        const state = persistedState as {
-          token?: string | null;
-          user: User | null;
-          isAuthenticated: boolean;
-        };
-        delete state.token;
-        return state;
-      },
       partialize: (state) => ({
         user: state.user,
         isAuthenticated: state.isAuthenticated,
+        cart: state.cart,
       }),
-    }
-  )
+    },
+  ),
 );
 
 export default useStore;

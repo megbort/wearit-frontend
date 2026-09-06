@@ -20,7 +20,7 @@ vi.mock('../services/apollo/client', () => ({
 
 const { useLogin, useLogout, useMe } = await import('./useAuth');
 
-const user = { id: '1', firstName: 'Ada', lastName: 'Lovelace', email: 'ada@example.com' };
+const user = { id: '1', firstName: 'Ada', lastName: 'Lovelace', email: 'ada@example.com', cart: [] };
 const initialState = useStore.getState();
 
 beforeEach(() => {

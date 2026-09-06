@@ -5,12 +5,14 @@ interface BoxSelectProps {
   title: string;
   boxSize: number;
   items: { value: string; selected: boolean }[];
+  onChange?: (value: string) => void;
 }
 
 const BoxSelect = ({
   title = 'Default Title',
   boxSize = 50,
   items = [],
+  onChange,
 }: Readonly<BoxSelectProps>) => {
   const [selectedValue, setSelectedValue] = React.useState<string>(
     items.length > 0 ? items.find((item) => item.selected)?.value ?? '' : ''
@@ -18,6 +20,7 @@ const BoxSelect = ({
 
   const handleChange = (value: string) => {
     setSelectedValue(value);
+    onChange?.(value);
   };
 
   return (

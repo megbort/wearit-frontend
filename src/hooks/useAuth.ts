@@ -12,6 +12,7 @@ import type {
 } from '../services/graphql/models/auth';
 import useStore from '../services/store/useStore';
 import client, { setAccessToken, getAccessToken } from '../services/apollo/client';
+import { mergeGuestCartOnLogin, loadServerCart } from './useCart';
 
 export const useLogin = () => {
   const { login: loginStore, setLoading, isLoading } = useStore();
@@ -27,6 +28,11 @@ export const useLogin = () => {
       if (result.data?.login) {
         setAccessToken(result.data.login.token);
         loginStore(result.data.login.user);
+        if (useStore.getState().cart.length > 0) {
+          await mergeGuestCartOnLogin();
+        } else {
+          await loadServerCart(result.data.login.user.cart);
+        }
       }
       setLoading(false);
       return result.data;
@@ -62,6 +68,9 @@ export const useRegister = () => {
       if (result.data?.register) {
         setAccessToken(result.data.register.token);
         loginStore(result.data.register.user);
+        if (useStore.getState().cart.length > 0) {
+          await mergeGuestCartOnLogin();
+        }
       }
       setLoading(false);
       return result.data;

@@ -11,7 +11,7 @@ interface ProductMiniCardProps {
 export default function ProductMiniCard({ product }: Readonly<ProductMiniCardProps>) {
   return (
     <Link href={`/product/${product.id}`}>
-      <div className="w-[140px] h-[120px] relative rounded-lg border dark:border-zinc-600 hover:border-neutral-500 hover:cursor-pointer transition-colors overflow-hidden">
+      <div className="w-[140px] h-[120px] relative rounded-lg border dark:border-zinc-600 hover:cursor-pointer overflow-hidden">
         {product.sale && (
           <div className="absolute top-0 right-0 z-10 rounded-tr rounded-bl bg-wearit-red text-wearit-white text-sm px-1.5 py-0.5">
             Sale

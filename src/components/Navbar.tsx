@@ -26,7 +26,7 @@ import { useLogout } from '../hooks/useAuth';
 import { useTranslations } from 'next-intl';
 
 export default function Navbar() {
-  const t = useTranslations('Navbar');
+  const translate = useTranslations('Navbar');
 
   const [mobileMenuAnchor, setMobileMenuAnchor] = useState<null | HTMLElement>(
     null
@@ -74,21 +74,21 @@ export default function Navbar() {
   const handleLogout = () => {
     logout();
     handleClose();
-    setNotification({ message: t('logoutMessage'), severity: 'info' });
+    setNotification({ message: translate('logoutMessage'), severity: 'info' });
   };
 
   return (
     <ThemeProvider theme={theme}>
       <header className="w-full">
         <div className="bg-wearit-yellow flex justify-center py-1 text-caption">
-          <p>{t('banner')}</p>
+          <p>{translate('banner')}</p>
         </div>
         <nav className="bg-wearit-black flex items-center justify-between p-4 md:p-8 h-[100px]">
           <div>
             <Link href={'/'}>
               <Image
                 src="wearit/wearit-logo-v3_cj1le4.png"
-                alt={t('logoAlt')}
+                alt={translate('logoAlt')}
                 width={200}
                 height={50}
                 priority
@@ -147,22 +147,22 @@ export default function Navbar() {
             >
               <MenuItem onClick={handleClose}>
                 <Link href={'/products'} className="w-full">
-                  {t('newArrivals')}
+                  {translate('newArrivals')}
                 </Link>
               </MenuItem>
               <MenuItem onClick={handleClose}>
                 <Link href={'/products'} className="w-full">
-                  {t('apparel')}
+                  {translate('apparel')}
                 </Link>
               </MenuItem>
               <MenuItem onClick={handleClose}>
                 <Link href={'/products'} className="w-full">
-                  {t('accessories')}
+                  {translate('accessories')}
                 </Link>
               </MenuItem>
               <MenuItem onClick={handleClose}>
                 <Link href={'/products'} className="w-full">
-                  {t('onSale')}
+                  {translate('onSale')}
                 </Link>
               </MenuItem>
             </Menu>
@@ -174,25 +174,25 @@ export default function Navbar() {
               href={'/products'}
               className="title text-wearit-red hover:text-wearit-green"
             >
-              {t('newArrivals')}
+              {translate('newArrivals')}
             </Link>
             <Link
               href={'/products'}
               className="title text-wearit-red hover:text-wearit-green"
             >
-              {t('apparel')}
+              {translate('apparel')}
             </Link>
             <Link
               href={'/products'}
               className="title text-wearit-red hover:text-wearit-green"
             >
-              {t('accessories')}
+              {translate('accessories')}
             </Link>
             <Link
               href={'/products'}
               className="title text-wearit-red hover:text-wearit-green"
             >
-              {t('onSale')}
+              {translate('onSale')}
             </Link>
           </div>
 
@@ -254,18 +254,18 @@ export default function Navbar() {
                       </div>
                     </MenuItem>,
                     <MenuItem key="logout" onClick={handleLogout}>
-                      <span className="text-wearit-black">{t('logout')}</span>
+                      <span className="text-wearit-black">{translate('logout')}</span>
                     </MenuItem>,
                   ]
                 : [
                     <MenuItem key="login" onClick={handleClose}>
                       <Link href={'/auth/login'} className="w-full">
-                        {t('login')}
+                        {translate('login')}
                       </Link>
                     </MenuItem>,
                     <MenuItem key="signup" onClick={handleClose}>
                       <Link href={'/auth/signup'} className="w-full">
-                        {t('signUp')}
+                        {translate('signUp')}
                       </Link>
                     </MenuItem>,
                   ]}

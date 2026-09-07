@@ -1,0 +1,118 @@
+{
+  "Navbar": {
+    "banner": "Ce site est uniquement à des fins de démonstration. Il est fonctionnel, mais juste pour le plaisir. N'hésitez pas à explorer et à expérimenter ! 🔥🔥🔥",
+    "logoAlt": "Logo Wearit",
+    "newArrivals": "Nouveautés",
+    "apparel": "Vêtements",
+    "accessories": "Accessoires",
+    "onSale": "Soldes",
+    "logout": "Déconnexion",
+    "logoutMessage": "Vous avez été déconnecté(e).",
+    "login": "Connexion",
+    "signUp": "S'inscrire"
+  },
+  "CartDrawer": {
+    "title": "Panier",
+    "empty": "Votre panier est vide",
+    "discount": "Remise",
+    "total": "Total",
+    "checkout": "Passer à la caisse",
+    "taxNote": "Taxes et frais de livraison calculés lors du paiement",
+    "remove": "supprimer"
+  },
+  "Featured": {
+    "heading": "Nouveaux articles vedettes ✨",
+    "viewMore": "Voir plus"
+  },
+  "Footer": {
+    "mainMenu": "Menu principal",
+    "shop": "Boutique",
+    "newReleases": "Nouveautés",
+    "accessories": "Accessoires",
+    "giftCards": "Cartes cadeaux",
+    "lastChanceSale": "Dernières chances",
+    "help": "Aide",
+    "ordersShipping": "Commandes et livraison",
+    "returnsRefunds": "Retours et remboursements",
+    "salesTerms": "Conditions générales de vente",
+    "privacyPolicy": "Politique de confidentialité",
+    "termsOfService": "Conditions d'utilisation",
+    "newsletterText": "Inscrivez-vous à notre newsletter pour être informé(e) des dernières collections, offres et actualités !",
+    "namePlaceholder": "Nom",
+    "emailPlaceholder": "E-mail",
+    "subscribe": "S'abonner",
+    "confirmationEmail": "Un e-mail de confirmation a été envoyé !",
+    "credit": "Conçu et développé par Megan Krenbrink."
+  },
+  "ProductCard": {
+    "sale": "Soldes"
+  },
+  "Categories": {
+    "shopNewArrivals": "Nouveautés",
+    "shopTeesTops": "T-shirts et hauts",
+    "shopOnSale": "Soldes",
+    "shopHats": "Chapeaux"
+  },
+  "HomePage": {
+    "heroAlt": "Image principale",
+    "appTitle": "Découvrez-en plus avec l'application WearIt",
+    "appSubtitle": "Maintenant disponible sur iPhone et Android",
+    "downloadNow": "Télécharger maintenant"
+  },
+  "ProductsPage": {
+    "heading": "Produits",
+    "clearCategory": "Effacer la catégorie",
+    "clearSort": "Effacer le tri",
+    "showMore": "Afficher plus",
+    "sortPlaceholder": "Trier par",
+    "allProducts": "Tous les produits",
+    "featured": "Vedettes",
+    "onSale": "Soldes",
+    "priceHighToLow": "Prix décroissant",
+    "priceLowToHigh": "Prix croissant",
+    "categoryPlaceholder": "Catégorie",
+    "allCategories": "Toutes les catégories",
+    "pants": "Pantalons",
+    "tees": "T-shirts",
+    "sweaters": "Pulls",
+    "shorts": "Shorts",
+    "jackets": "Vestes"
+  },
+  "ProductPage": {
+    "notFound": "Produit introuvable",
+    "sale": "Soldes",
+    "addToCart": "Ajouter au panier",
+    "addedToCart": "Ajouté au panier",
+    "sizeChart": "Guide des tailles",
+    "details": "Détails :",
+    "youMightLike": "Vous pourriez aimer aussi"
+  },
+  "LoginPage": {
+    "heading": "Connexion",
+    "subheading": "Entrez votre e-mail et mot de passe pour vous connecter",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "loggingIn": "Connexion en cours...",
+    "loginButton": "Connexion",
+    "noAccount": "Vous n'avez pas de compte ?",
+    "signUp": "S'inscrire",
+    "errorRequired": "Les deux champs sont obligatoires.",
+    "successMessage": "Connexion réussie !",
+    "errorFallback": "Échec de la connexion. Veuillez réessayer."
+  },
+  "SignUpPage": {
+    "heading": "Inscription",
+    "subheading": "Veuillez remplir les informations ci-dessous",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "creatingAccount": "Création du compte...",
+    "createAccount": "Créer un compte",
+    "haveAccount": "Vous avez déjà un compte ?",
+    "login": "Connexion",
+    "errorRequired": "Tous les champs sont obligatoires.",
+    "successMessage": "Compte créé avec succès !",
+    "errorFallback": "Échec de l'inscription. Veuillez réessayer."
+  }
+}

@@ -21,7 +21,7 @@ const CartLineItem: React.FC<CartLineItemProps> = ({
   onDecrement,
   onRemove,
 }) => {
-  const t = useTranslations('CartDrawer');
+  const translate = useTranslations('CartDrawer');
   const colorLabel = item.color.charAt(0).toUpperCase() + item.color.slice(1);
 
   return (
@@ -75,7 +75,7 @@ const CartLineItem: React.FC<CartLineItemProps> = ({
           className="text-caption text-wearit-red underline hover:text-wearit-pink text-left w-fit"
           onClick={() => onRemove()}
         >
-          {t('remove')}
+          {translate('remove')}
         </button>
       </div>
     </li>

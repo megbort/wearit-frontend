@@ -10,14 +10,14 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: Readonly<ProductCardProps>) {
-  const t = useTranslations('ProductCard');
+  const translate = useTranslations('ProductCard');
 
   return (
     <Link href={`product/${product.id}`}>
       <div className="relative w-[280px] h-[280px] flex flex-col justify-between bg-neutral-100 dark:bg-zinc-800 rounded-lg border dark:border-zinc-600 hover:border-neutral-600 hover:cursor-pointer hover:bg-transparent dark:hover:bg-zinc-700">
         {product.sale && (
           <div className="absolute top-0 right-0 z-50 rounded-tr-lg bg-wearit-red text-wearit-white w-[80px] p-1 text-center">
-            {t('sale')}
+            {translate('sale')}
           </div>
         )}
         <div className="h-[230px] relative">

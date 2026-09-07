@@ -47,6 +47,12 @@
   "ProductCard": {
     "sale": "Sale"
   },
+  "Categories": {
+    "shopNewArrivals": "Shop New Arrivals",
+    "shopTeesTops": "Shop Tees & Tops",
+    "shopOnSale": "Shop On Sale",
+    "shopHats": "Shop Hats"
+  },
   "HomePage": {
     "heroAlt": "Hero Image",
     "appTitle": "Discover more with the WearIt App",

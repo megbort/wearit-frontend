@@ -2,19 +2,19 @@ import { Category } from '../models/category';
 
 export const Categories: Category[] = [
   {
-    title: 'Shop New Arrivals',
+    title: 'shopNewArrivals',
     imageUrl: 'wearit/pexels-alteredsnaps-14663663_pjqwsy.jpg',
   },
   {
-    title: 'Shop Tees & Tops',
+    title: 'shopTeesTops',
     imageUrl: 'wearit/pexels-spencer-selover-142259-428311_z50z8n.jpg',
   },
   {
-    title: 'Shop On Sale',
+    title: 'shopOnSale',
     imageUrl: 'wearit/pexels-alteredsnaps-14663631_inzowa.jpg',
   },
   {
-    title: 'Shop Hats',
+    title: 'shopHats',
     imageUrl: 'wearit/hatman-resized_f1yxly.jpg',
   },
 ];

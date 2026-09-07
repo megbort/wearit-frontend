@@ -17,7 +17,7 @@ interface CartDrawerProps {
 const MIN_QUANTITY = 1;
 
 const CartDrawer: React.FC<CartDrawerProps> = ({ open, onClose }) => {
-  const t = useTranslations('CartDrawer');
+  const translate = useTranslations('CartDrawer');
   const cart = useStore((state) => state.cart);
   const { removeItem, updateQuantity } = useCart();
 
@@ -40,7 +40,7 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ open, onClose }) => {
             className="font-bold text-wearit-black dark:text-wearit-white"
             style={{ fontFamily: 'var(--font-comfortaa)' }}
           >
-            {t('title')}
+            {translate('title')}
           </Typography>
           <IconButton onClick={onClose} className="text-wearit-red hover:text-wearit-green">
             <FontAwesomeIcon icon={faTimes} />
@@ -51,7 +51,7 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ open, onClose }) => {
         <div className="flex-1 overflow-y-auto">
           {cart.length === 0 ? (
             <Typography className="text-wearit-grey-darker text-center mt-8">
-              {t('empty')}
+              {translate('empty')}
             </Typography>
           ) : (
             <ul className="flex flex-col gap-4">
@@ -86,7 +86,7 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ open, onClose }) => {
               className="font-bold text-wearit-black dark:text-wearit-white"
               style={{ fontFamily: 'var(--font-comfortaa)' }}
             >
-              {t('total')}
+              {translate('total')}
             </Typography>
             <Typography
               variant="h6"
@@ -102,12 +102,12 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ open, onClose }) => {
             className="w-full bg-wearit-red hover:bg-wearit-pink text-white font-bold py-3 px-4 rounded transition-colors duration-200 mb-3 disabled:opacity-50"
             disabled
           >
-            {t('checkout')}
+            {translate('checkout')}
           </button>
 
           {/* Shipping Note */}
           <Typography className="text-wearit-grey-darker text-sm">
-            {t('taxNote')}
+            {translate('taxNote')}
           </Typography>
         </div>
       </div>

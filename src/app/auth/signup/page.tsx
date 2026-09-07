@@ -13,7 +13,7 @@ import useStore from '../../../services/store/useStore';
 import { useTranslations } from 'next-intl';
 
 const SignUpPage = () => {
-  const t = useTranslations('SignUpPage');
+  const translate = useTranslations('SignUpPage');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -25,18 +25,18 @@ const SignUpPage = () => {
 
   const handleSubmit = async () => {
     if (!firstName || !lastName || !email || !password) {
-      setLocalError(t('errorRequired'));
+      setLocalError(translate('errorRequired'));
       return;
     }
 
     try {
       setLocalError('');
       await register(firstName, lastName, email, password);
-      setNotification({ message: t('successMessage'), severity: 'success' });
+      setNotification({ message: translate('successMessage'), severity: 'success' });
       router.push('/');
     } catch (error: unknown) {
       const message =
-        error instanceof Error ? error.message : t('errorFallback');
+        error instanceof Error ? error.message : translate('errorFallback');
       setLocalError(message);
     }
   };
@@ -44,10 +44,10 @@ const SignUpPage = () => {
   return (
     <ThemeProvider theme={theme}>
       <div className="h-full flex flex-col py-24 m-auto gap-4 max-w-[275px] md:max-w-[550px] dark:text-wearit-white">
-        <h3 className="text-center">{t('heading')}</h3>
-        <p className="text-center">{t('subheading')}</p>
+        <h3 className="text-center">{translate('heading')}</h3>
+        <p className="text-center">{translate('subheading')}</p>
         <TextField
-          label={t('firstName')}
+          label={translate('firstName')}
           variant="outlined"
           color="secondary"
           className="bg-wearit-white opacity-90 rounded-md"
@@ -55,7 +55,7 @@ const SignUpPage = () => {
           onChange={(e) => setFirstName(e.target.value)}
         />
         <TextField
-          label={t('lastName')}
+          label={translate('lastName')}
           variant="outlined"
           color="secondary"
           className="bg-wearit-white opacity-90 rounded-md"
@@ -63,7 +63,7 @@ const SignUpPage = () => {
           onChange={(e) => setLastName(e.target.value)}
         />
         <TextField
-          label={t('email')}
+          label={translate('email')}
           variant="outlined"
           color="secondary"
           className="bg-wearit-white opacity-90 rounded-md"
@@ -71,7 +71,7 @@ const SignUpPage = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
         <TextField
-          label={t('password')}
+          label={translate('password')}
           type="password"
           variant="outlined"
           color="secondary"
@@ -93,14 +93,14 @@ const SignUpPage = () => {
             '&.Mui-disabled': { opacity: 0.7, backgroundColor: '#ff3d5c', color: '#fff' },
           }}
         >
-          {loading ? t('creatingAccount') : t('createAccount')}
+          {loading ? translate('creatingAccount') : translate('createAccount')}
         </Button>
         {localError && <p className="text-red-500 text-sm">{localError}</p>}
         <div>
           <p>
-            {t('haveAccount')}&nbsp;
+            {translate('haveAccount')}&nbsp;
             <Link href={'login'} className="text-wearit-green">
-              {t('login')}
+              {translate('login')}
             </Link>
           </p>
         </div>

@@ -32,10 +32,10 @@ export default async function Product(props: any) {
   const params = (await props.params) as { id: string };
   const id = params.id;
   const product = await fetchProduct(id);
-  const t = await getTranslations('ProductPage');
+  const translate = await getTranslations('ProductPage');
 
   if (!product) {
-    return <div>{t('notFound')}</div>;
+    return <div>{translate('notFound')}</div>;
   }
 
   return (
@@ -44,7 +44,7 @@ export default async function Product(props: any) {
         <div>
           {product.sale && (
             <div className="rounded-lg mb-4 bg-wearit-red text-wearit-white w-[80px] p-1 text-center">
-              {t('sale')}
+              {translate('sale')}
             </div>
           )}
           <div className="w-[350px] h-[350px] relative">
@@ -82,10 +82,10 @@ export default async function Product(props: any) {
           )}
           <ProductAddToCart product={product} />
           <p className="text-caption underline hover:cursor-pointer hover:text-wearit-red">
-            {t('sizeChart')}
+            {translate('sizeChart')}
           </p>
           <div>
-            <p className="subtitle-1">{t('details')}</p>
+            <p className="subtitle-1">{translate('details')}</p>
             <ul className="list-disc">
               {product.details.map((item) => (
                 <li className="text-body-1 ml-4" key={item}>
@@ -97,7 +97,7 @@ export default async function Product(props: any) {
         </div>
       </div>
       <div className="max-w-[900px] mx-auto py-20 hidden md:block">
-        <p className="text-center subtitle-1 pb-6">{t('youMightLike')}</p>
+        <p className="text-center subtitle-1 pb-6">{translate('youMightLike')}</p>
         <ProductSlider currentId={id} />
       </div>
     </div>

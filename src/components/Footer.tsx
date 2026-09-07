@@ -16,7 +16,7 @@ import { useTranslations } from 'next-intl';
 import { appVersion } from '@/utils/version';
 
 export default function Footer() {
-  const t = useTranslations('Footer');
+  const translate = useTranslations('Footer');
   const [subscribeMessage, setSubscribeMessage] = useState<boolean>(false);
 
   const handleSubscribe = () => {
@@ -59,60 +59,60 @@ export default function Footer() {
         </div>
         <div className="text-wearit-white">
           <ul className="flex flex-col gap-4">
-            <li className="title">{t('mainMenu')}</li>
+            <li className="title">{translate('mainMenu')}</li>
             <li className="text-body-1 hover:text-wearit-blue hover:cursor-pointer">
-              {t('shop')}
+              {translate('shop')}
             </li>
             <li className="text-body-1 hover:text-wearit-blue hover:cursor-pointer">
-              {t('newReleases')}
+              {translate('newReleases')}
             </li>
             <li className="text-body-1 hover:text-wearit-blue hover:cursor-pointer">
-              {t('accessories')}
+              {translate('accessories')}
             </li>
             <li className="text-body-1 hover:text-wearit-blue hover:cursor-pointer">
-              {t('giftCards')}
+              {translate('giftCards')}
             </li>
             <li className="text-body-1 hover:text-wearit-blue hover:cursor-pointer">
-              {t('lastChanceSale')}
+              {translate('lastChanceSale')}
             </li>
           </ul>
         </div>
         <div className="text-wearit-white ">
           <ul className="flex flex-col gap-4">
-            <li className="title">{t('help')}</li>
+            <li className="title">{translate('help')}</li>
             <li className="text-body-1 hover:text-wearit-blue hover:cursor-pointer">
-              {t('ordersShipping')}
+              {translate('ordersShipping')}
             </li>
             <li className="text-body-1 hover:text-wearit-blue hover:cursor-pointer">
-              {t('returnsRefunds')}
+              {translate('returnsRefunds')}
             </li>
             <li className="text-body-1 hover:text-wearit-blue hover:cursor-pointer">
-              {t('salesTerms')}
+              {translate('salesTerms')}
             </li>
             <li className="text-body-1 hover:text-wearit-blue hover:cursor-pointer">
-              {t('privacyPolicy')}
+              {translate('privacyPolicy')}
             </li>
             <li className="text-body-1 hover:text-wearit-blue hover:cursor-pointer">
-              {t('termsOfService')}
+              {translate('termsOfService')}
             </li>
           </ul>
         </div>
         <div className="flex flex-col gap-2 max-w-[250px] lg:max-w-[320px] mt-8">
-          <p className="text-wearit-white">{t('newsletterText')}</p>
+          <p className="text-wearit-white">{translate('newsletterText')}</p>
           <TextField
-            label={t('namePlaceholder')}
+            label={translate('namePlaceholder')}
             variant="outlined"
             color="secondary"
             className="bg-wearit-white opacity-90 rounded-md"
           />
           <TextField
-            label={t('emailPlaceholder')}
+            label={translate('emailPlaceholder')}
             variant="outlined"
             color="secondary"
             className="bg-wearit-white opacity-90 rounded-md"
           />
           <CustomButton variant="primary" onClick={handleSubscribe}>
-            {t('subscribe')}
+            {translate('subscribe')}
           </CustomButton>
           <div className="h-2"></div>
           <p
@@ -120,12 +120,12 @@ export default function Footer() {
               !subscribeMessage && 'invisible'
             }`}
           >
-            {t('confirmationEmail')}
+            {translate('confirmationEmail')}
           </p>
         </div>
       </div>
       <div className="bg-wearit-yellow text-wearit-black text-center text-caption py-1">
-        {t('credit')}
+        {translate('credit')}
         <br />
         <span className="text-wearit-black/70">
           v{appVersion.build} &middot; {appVersion.sha}

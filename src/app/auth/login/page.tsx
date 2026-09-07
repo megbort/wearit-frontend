@@ -13,7 +13,7 @@ import useStore from '../../../services/store/useStore';
 import { useTranslations } from 'next-intl';
 
 const LoginPage = () => {
-  const t = useTranslations('LoginPage');
+  const translate = useTranslations('LoginPage');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [localError, setLocalError] = useState('');
@@ -23,18 +23,18 @@ const LoginPage = () => {
 
   const handleLogin = async () => {
     if (!email || !password) {
-      setLocalError(t('errorRequired'));
+      setLocalError(translate('errorRequired'));
       return;
     }
 
     try {
       setLocalError('');
       await login(email, password);
-      setNotification({ message: t('successMessage'), severity: 'success' });
+      setNotification({ message: translate('successMessage'), severity: 'success' });
       router.push('/');
     } catch (error: unknown) {
       const message =
-        error instanceof Error ? error.message : t('errorFallback');
+        error instanceof Error ? error.message : translate('errorFallback');
       setLocalError(message);
     }
   };
@@ -42,10 +42,10 @@ const LoginPage = () => {
   return (
     <ThemeProvider theme={theme}>
       <div className="h-full flex flex-col py-24 m-auto gap-4 max-w-[275px] md:max-w-[550px] dark:text-wearit-white">
-        <h3 className="text-center">{t('heading')}</h3>
-        <p className="text-center">{t('subheading')}</p>
+        <h3 className="text-center">{translate('heading')}</h3>
+        <p className="text-center">{translate('subheading')}</p>
         <TextField
-          label={t('email')}
+          label={translate('email')}
           variant="outlined"
           color="secondary"
           type="email"
@@ -54,7 +54,7 @@ const LoginPage = () => {
           className="bg-wearit-white opacity-90 rounded-md"
         />
         <TextField
-          label={t('password')}
+          label={translate('password')}
           variant="outlined"
           color="secondary"
           type="password"
@@ -76,14 +76,14 @@ const LoginPage = () => {
             '&.Mui-disabled': { opacity: 0.7, backgroundColor: '#ff3d5c', color: '#fff' },
           }}
         >
-          {loading ? t('loggingIn') : t('loginButton')}
+          {loading ? translate('loggingIn') : translate('loginButton')}
         </Button>
         {localError && <p className="text-red-500 text-sm">{localError}</p>}
         <div>
           <p>
-            {t('noAccount')}&nbsp;
+            {translate('noAccount')}&nbsp;
             <Link href={'signup'} className="text-wearit-green">
-              {t('signUp')}
+              {translate('signUp')}
             </Link>
           </p>
         </div>

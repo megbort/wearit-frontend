@@ -11,7 +11,7 @@ import { useProducts } from '@/hooks/useProducts';
 import useStore from '@/services/store/useStore';
 
 export default function Products() {
-  const t = useTranslations('ProductsPage');
+  const translate = useTranslations('ProductsPage');
   const { products: allProducts, loading: productsLoading } = useProducts();
   const setProducts = useStore((state) => state.setProducts);
 
@@ -22,25 +22,25 @@ export default function Products() {
   }, [allProducts, setProducts]);
 
   const sortBySelect = {
-    placeholder: t('sortPlaceholder'),
+    placeholder: translate('sortPlaceholder'),
     items: [
-      { value: 'all', label: t('allProducts') },
-      { value: 'featured', label: t('featured') },
-      { value: 'sale', label: t('onSale') },
-      { value: 'priceHigh', label: t('priceHighToLow') },
-      { value: 'priceLow', label: t('priceLowToHigh') },
+      { value: 'all', label: translate('allProducts') },
+      { value: 'featured', label: translate('featured') },
+      { value: 'sale', label: translate('onSale') },
+      { value: 'priceHigh', label: translate('priceHighToLow') },
+      { value: 'priceLow', label: translate('priceLowToHigh') },
     ],
   };
 
   const categorySelect = {
-    placeholder: t('categoryPlaceholder'),
+    placeholder: translate('categoryPlaceholder'),
     items: [
-      { value: 'all', label: t('allCategories') },
-      { value: CategoryType.Pants, label: t('pants') },
-      { value: CategoryType.Tees, label: t('tees') },
-      { value: CategoryType.Sweaters, label: t('sweaters') },
-      { value: CategoryType.Shorts, label: t('shorts') },
-      { value: CategoryType.Jackets, label: t('jackets') },
+      { value: 'all', label: translate('allCategories') },
+      { value: CategoryType.Pants, label: translate('pants') },
+      { value: CategoryType.Tees, label: translate('tees') },
+      { value: CategoryType.Sweaters, label: translate('sweaters') },
+      { value: CategoryType.Shorts, label: translate('shorts') },
+      { value: CategoryType.Jackets, label: translate('jackets') },
     ],
   };
 
@@ -93,7 +93,7 @@ export default function Products() {
   return (
     <div className="py-12 mb-8 px-2 md:px-10 w-full lg:max-w-5xl xl:max-w-7xl mx-auto dark:bg-zinc-900 dark:text-wearit-white">
       <header className="p-4 text-center">
-        <h3 className="font-bold">{t('heading')}</h3>
+        <h3 className="font-bold">{translate('heading')}</h3>
       </header>
       <div className="flex flex-col sm:flex-row justify-between items-center pb-12">
         <div className="flex flex-col md:flex-row">
@@ -107,12 +107,12 @@ export default function Products() {
             variant="text"
             onClick={() => setSelectedCategory('all')}
           >
-            {t('clearCategory')}
+            {translate('clearCategory')}
           </CustomButton>
         </div>
         <div className="flex flex-col-reverse md:flex-row">
           <CustomButton variant="text" onClick={() => setSelectedSort('all')}>
-            {t('clearSort')}
+            {translate('clearSort')}
           </CustomButton>
           <SelectDropdown
             placeholder={sortBySelect.placeholder}
@@ -134,7 +134,7 @@ export default function Products() {
       {visibleCount < filteredProducts.length && (
         <div className="py-8 text-center">
           <CustomButton variant="primary" onClick={showMoreProducts}>
-            {t('showMore')}
+            {translate('showMore')}
           </CustomButton>
         </div>
       )}

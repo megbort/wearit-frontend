@@ -4,8 +4,8 @@ import Navbar from '@/components/Navbar';
 import { Comfortaa } from 'next/font/google';
 import Footer from '@/components/Footer';
 import GlobalToast from '@/components/GlobalToast';
-import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import IntlProvider from '@/components/IntlProvider';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import AuthProvider from '@/components/AuthProvider';
 
@@ -33,7 +33,7 @@ export default async function RootLayout({
       <body className={comfortaa.className}>
         <script dangerouslySetInnerHTML={{ __html: `if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark');` }} />
         <ThemeProvider>
-          <NextIntlClientProvider messages={messages}>
+          <IntlProvider initialLocale="en" initialMessages={messages}>
             <AuthProvider>
               <main className="h-full flex flex-col">
                 <Navbar />
@@ -42,7 +42,7 @@ export default async function RootLayout({
                 <GlobalToast />
               </main>
             </AuthProvider>
-          </NextIntlClientProvider>
+          </IntlProvider>
         </ThemeProvider>
       </body>
     </html>

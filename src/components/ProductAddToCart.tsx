@@ -15,7 +15,7 @@ interface ProductAddToCartProps {
 export default function ProductAddToCart({
   product,
 }: Readonly<ProductAddToCartProps>) {
-  const t = useTranslations('ProductPage');
+  const translate = useTranslations('ProductPage');
   const { addItem } = useCart();
   const setNotification = useStore((state) => state.setNotification);
 
@@ -45,7 +45,7 @@ export default function ProductAddToCart({
     setAdding(true);
     try {
       await addItem(product, size, color);
-      setNotification({ message: t('addedToCart'), severity: 'success' });
+      setNotification({ message: translate('addedToCart'), severity: 'success' });
     } catch {
       // useCart already surfaces an error notification
     } finally {
@@ -69,7 +69,7 @@ export default function ProductAddToCart({
           onClick={handleAddToCart}
           disabled={adding}
         >
-          {t('addToCart')}
+          {translate('addToCart')}
         </CustomButton>
       </div>
     </>

@@ -12,6 +12,20 @@ const itemMock: CartItem = {
   product: {
     name: Products[0].name,
     price: Products[0].price,
+    effectivePrice: Products[0].price,
+    image: Products[0].images[0],
+  },
+};
+
+const saleItemMock: CartItem = {
+  productId: Products[0].id,
+  size: 'm',
+  color: 'black',
+  quantity: 2,
+  product: {
+    name: Products[0].name,
+    price: Products[0].price,
+    effectivePrice: Products[0].price - 5,
     image: Products[0].images[0],
   },
 };
@@ -40,7 +54,9 @@ export const Default: Story = {
     await expect(canvas.getByText(itemMock.product.name)).toBeInTheDocument();
     await expect(canvas.getByText('Black | M')).toBeInTheDocument();
     await expect(
-      canvas.getByText(`$${(itemMock.product.price * itemMock.quantity).toFixed(2)}`),
+      canvas.getByText(
+        `$${(itemMock.product.effectivePrice * itemMock.quantity).toFixed(2)}`,
+      ),
     ).toBeInTheDocument();
     await expect(canvas.getByText('2')).toBeInTheDocument();
 
@@ -52,6 +68,29 @@ export const Default: Story = {
     ).toBeInTheDocument();
     await expect(
       canvas.getByRole('button', { name: 'Increase quantity' }),
+    ).toBeInTheDocument();
+  },
+};
+
+export const OnSale: Story = {
+  args: {
+    item: saleItemMock,
+    onIncrement: fn(),
+    onDecrement: fn(),
+    onRemove: fn(),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    await expect(
+      canvas.getByText(
+        `$${(saleItemMock.product.price * saleItemMock.quantity).toFixed(2)}`,
+      ),
+    ).toBeInTheDocument();
+    await expect(
+      canvas.getByText(
+        `$${(saleItemMock.product.effectivePrice * saleItemMock.quantity).toFixed(2)}`,
+      ),
     ).toBeInTheDocument();
   },
 };

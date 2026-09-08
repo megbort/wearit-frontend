@@ -120,6 +120,7 @@ export default function Navbar() {
             </Button>
             <Button
               id="menu-button"
+              aria-label="Open menu"
               aria-controls={open ? 'menu' : undefined}
               aria-haspopup="true"
               aria-expanded={open ? 'true' : undefined}
@@ -206,6 +207,7 @@ export default function Navbar() {
             </Button>
             <Button
               onClick={handleUserClick}
+              aria-label="Account menu"
               aria-controls={userMenuOpen ? 'user-menu' : undefined}
               aria-haspopup="true"
               aria-expanded={userMenuOpen ? 'true' : undefined}

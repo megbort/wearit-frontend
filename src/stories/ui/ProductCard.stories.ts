@@ -26,3 +26,20 @@ export const Default: Story = {
     ).toBeInTheDocument();
   },
 };
+
+const saleProduct = Products.find((p) => p.sale && (p.discountPercent ?? 0) > 0)!;
+
+export const OnSale: Story = {
+  args: {
+    product: saleProduct,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(
+      canvas.getByText(`$${saleProduct.price}`),
+    ).toBeInTheDocument();
+    await expect(
+      canvas.getByText(`$${saleProduct.effectivePrice!.toFixed(2)}`),
+    ).toBeInTheDocument();
+  },
+};

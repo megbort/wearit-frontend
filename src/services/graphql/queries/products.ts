@@ -13,6 +13,8 @@ export const GET_PRODUCTS_QUERY = gql`
       details
       featured
       sale
+      discountPercent
+      effectivePrice
       category
     }
   }
@@ -31,6 +33,8 @@ export const GET_PRODUCT_QUERY = gql`
       details
       featured
       sale
+      discountPercent
+      effectivePrice
       category
     }
   }
@@ -45,6 +49,8 @@ export const GET_FEATURED_PRODUCTS_QUERY = gql`
       price
       images
       sale
+      discountPercent
+      effectivePrice
       category
     }
   }
@@ -63,6 +69,8 @@ export const GET_PRODUCTS_BY_CATEGORY_QUERY = gql`
       details
       featured
       sale
+      discountPercent
+      effectivePrice
       category
     }
   }

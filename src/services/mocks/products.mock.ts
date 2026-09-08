@@ -18,6 +18,8 @@ export const Products: Product[] = [
     ],
     featured: true,
     sale: false,
+    discountPercent: 0,
+    effectivePrice: 29.99,
     category: CategoryType.Jackets,
   },
   {
@@ -36,6 +38,8 @@ export const Products: Product[] = [
     ],
     featured: false,
     sale: true,
+    discountPercent: 20,
+    effectivePrice: 7.99,
     category: CategoryType.Pants,
   },
   {
@@ -54,6 +58,8 @@ export const Products: Product[] = [
     ],
     featured: true,
     sale: true,
+    discountPercent: 20,
+    effectivePrice: 12.79,
     category: CategoryType.Tees,
   },
   {
@@ -72,6 +78,8 @@ export const Products: Product[] = [
     ],
     featured: true,
     sale: false,
+    discountPercent: 0,
+    effectivePrice: 49.99,
     category: CategoryType.Tees,
   },
   {
@@ -90,6 +98,8 @@ export const Products: Product[] = [
     ],
     featured: true,
     sale: false,
+    discountPercent: 0,
+    effectivePrice: 20.99,
     category: CategoryType.Sweaters,
   },
   {
@@ -108,6 +118,8 @@ export const Products: Product[] = [
     ],
     featured: false,
     sale: true,
+    discountPercent: 20,
+    effectivePrice: 48.43,
     category: CategoryType.Sweaters,
   },
   {
@@ -126,6 +138,8 @@ export const Products: Product[] = [
     ],
     featured: true,
     sale: true,
+    discountPercent: 20,
+    effectivePrice: 23.99,
     category: CategoryType.Jackets,
   },
   {
@@ -144,6 +158,8 @@ export const Products: Product[] = [
     ],
     featured: true,
     sale: false,
+    discountPercent: 0,
+    effectivePrice: 59.99,
     category: CategoryType.Pants,
   },
   {
@@ -162,6 +178,8 @@ export const Products: Product[] = [
     ],
     featured: true,
     sale: false,
+    discountPercent: 0,
+    effectivePrice: 15.15,
     category: CategoryType.Jackets,
   },
   {
@@ -180,6 +198,8 @@ export const Products: Product[] = [
     ],
     featured: true,
     sale: true,
+    discountPercent: 20,
+    effectivePrice: 103.99,
     category: CategoryType.Tees,
   },
   {
@@ -198,6 +218,8 @@ export const Products: Product[] = [
     ],
     featured: true,
     sale: true,
+    discountPercent: 20,
+    effectivePrice: 7.99,
     category: CategoryType.Pants,
   },
   {
@@ -216,6 +238,8 @@ export const Products: Product[] = [
     ],
     featured: true,
     sale: true,
+    discountPercent: 20,
+    effectivePrice: 9.64,
     category: CategoryType.Pants,
   },
 ];

@@ -44,12 +44,12 @@ describe('useCart (guest)', () => {
 
     expect(mutate).not.toHaveBeenCalled();
     expect(useStore.getState().cart).toEqual([
-      { productId: 'p1', size: 'M', color: 'red', quantity: 1, product: { name: 'Tee', price: 20, image: 'tee.jpg' } },
+      { productId: 'p1', size: 'M', color: 'red', quantity: 1, product: { name: 'Tee', price: 20, effectivePrice: 20, image: 'tee.jpg' } },
     ]);
   });
 
   it('removeItem updates the local store without calling the API', async () => {
-    useStore.getState().addItem({ productId: 'p1', size: 'M', color: 'red', product: { name: 'Tee', price: 20, image: 'tee.jpg' } });
+    useStore.getState().addItem({ productId: 'p1', size: 'M', color: 'red', product: { name: 'Tee', price: 20, effectivePrice: 20, image: 'tee.jpg' } });
     const { result } = renderHook(() => useCart());
 
     await act(async () => {
@@ -79,7 +79,21 @@ describe('useCart (authenticated)', () => {
     );
     expect(query).not.toHaveBeenCalled(); // snapshot already known from the product arg
     expect(useStore.getState().cart).toEqual([
-      { productId: 'p1', size: 'M', color: 'red', quantity: 1, product: { name: 'Tee', price: 20, image: 'tee.jpg' } },
+      { productId: 'p1', size: 'M', color: 'red', quantity: 1, product: { name: 'Tee', price: 20, effectivePrice: 20, image: 'tee.jpg' } },
+    ]);
+  });
+
+  it('addItem snapshots the discounted effectivePrice for a sale product', async () => {
+    mutate.mockResolvedValue({ data: { addToCart: [{ productId: 'p3', size: 'M', color: 'red', quantity: 1 }] } });
+    const saleProduct: Product = { ...product, id: 'p3', price: 100, sale: true, discountPercent: 20, effectivePrice: 80 };
+    const { result } = renderHook(() => useCart());
+
+    await act(async () => {
+      await result.current.addItem(saleProduct, 'M', 'red');
+    });
+
+    expect(useStore.getState().cart).toEqual([
+      { productId: 'p3', size: 'M', color: 'red', quantity: 1, product: { name: 'Tee', price: 100, effectivePrice: 80, image: 'tee.jpg' } },
     ]);
   });
 
@@ -93,7 +107,7 @@ describe('useCart (authenticated)', () => {
     });
 
     expect(useStore.getState().cart).toEqual([
-      { productId: 'p2', size: 'L', color: 'blue', quantity: 2, product: { name: 'Hoodie', price: 50, image: 'hoodie.jpg' } },
+      { productId: 'p2', size: 'L', color: 'blue', quantity: 2, product: { name: 'Hoodie', price: 50, effectivePrice: 50, image: 'hoodie.jpg' } },
     ]);
   });
 
@@ -121,8 +135,8 @@ describe('mergeGuestCartOnLogin', () => {
   });
 
   it('replays each guest line as addToCart and sets the store from the final response', async () => {
-    useStore.getState().addItem({ productId: 'p1', size: 'M', color: 'red', product: { name: 'Tee', price: 20, image: 'tee.jpg' } }, 2);
-    useStore.getState().addItem({ productId: 'p2', size: 'L', color: 'blue', product: { name: 'Hoodie', price: 50, image: 'hoodie.jpg' } });
+    useStore.getState().addItem({ productId: 'p1', size: 'M', color: 'red', product: { name: 'Tee', price: 20, effectivePrice: 20, image: 'tee.jpg' } }, 2);
+    useStore.getState().addItem({ productId: 'p2', size: 'L', color: 'blue', product: { name: 'Hoodie', price: 50, effectivePrice: 50, image: 'hoodie.jpg' } });
 
     mutate
       .mockResolvedValueOnce({ data: { addToCart: [{ productId: 'p1', size: 'M', color: 'red', quantity: 2 }] } })
@@ -140,8 +154,8 @@ describe('mergeGuestCartOnLogin', () => {
     expect(mutate).toHaveBeenCalledTimes(2);
     expect(query).not.toHaveBeenCalled(); // both snapshots already known from the guest cart
     expect(useStore.getState().cart).toEqual([
-      { productId: 'p1', size: 'M', color: 'red', quantity: 2, product: { name: 'Tee', price: 20, image: 'tee.jpg' } },
-      { productId: 'p2', size: 'L', color: 'blue', quantity: 1, product: { name: 'Hoodie', price: 50, image: 'hoodie.jpg' } },
+      { productId: 'p1', size: 'M', color: 'red', quantity: 2, product: { name: 'Tee', price: 20, effectivePrice: 20, image: 'tee.jpg' } },
+      { productId: 'p2', size: 'L', color: 'blue', quantity: 1, product: { name: 'Hoodie', price: 50, effectivePrice: 50, image: 'hoodie.jpg' } },
     ]);
   });
 });
@@ -153,7 +167,7 @@ describe('loadServerCart', () => {
     await loadServerCart([{ productId: 'p1', size: 'M', color: 'red', quantity: 1 }]);
 
     expect(useStore.getState().cart).toEqual([
-      { productId: 'p1', size: 'M', color: 'red', quantity: 1, product: { name: 'Tee', price: 20, image: 'tee.jpg' } },
+      { productId: 'p1', size: 'M', color: 'red', quantity: 1, product: { name: 'Tee', price: 20, effectivePrice: 20, image: 'tee.jpg' } },
     ]);
   });
 });

@@ -23,6 +23,7 @@ const CartLineItem: React.FC<CartLineItemProps> = ({
 }) => {
   const translate = useTranslations('CartDrawer');
   const colorLabel = item.color.charAt(0).toUpperCase() + item.color.slice(1);
+  const isOnSale = item.product.price !== item.product.effectivePrice;
 
   return (
     <li className="flex gap-3">
@@ -44,9 +45,24 @@ const CartLineItem: React.FC<CartLineItemProps> = ({
           <Typography className="text-wearit-black dark:text-wearit-white font-semibold">
             {item.product.name}
           </Typography>
-          <Typography className="text-wearit-black dark:text-wearit-white whitespace-nowrap">
-            ${(item.product.price * item.quantity).toFixed(2)}
-          </Typography>
+          <div className="flex flex-col items-end gap-0.5">
+            <div className="flex gap-2 items-baseline">
+              {isOnSale && (
+                <Typography className="text-neutral-500 line-through whitespace-nowrap">
+                  ${(item.product.price * item.quantity).toFixed(2)}
+                </Typography>
+              )}
+              <Typography
+                className={`whitespace-nowrap ${
+                  isOnSale
+                    ? 'text-wearit-red'
+                    : 'text-wearit-black dark:text-wearit-white'
+                }`}
+              >
+                ${(item.product.effectivePrice * item.quantity).toFixed(2)}
+              </Typography>
+            </div>
+          </div>
         </div>
         <Typography className="text-caption text-wearit-grey-darker">
           {colorLabel} | {item.size.toUpperCase()}

@@ -11,5 +11,7 @@ export interface Product {
   details: string[];
   featured?: boolean;
   sale?: boolean;
+  discountPercent?: number;
+  effectivePrice?: number;
   category?: CategoryType;
 }

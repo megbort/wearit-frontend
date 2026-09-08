@@ -8,8 +8,8 @@ beforeEach(() => {
   useStore.setState(initialState, true);
 });
 
-const productA = { name: 'Tee', price: 20, image: 'tee.jpg' };
-const productB = { name: 'Hoodie', price: 50, image: 'hoodie.jpg' };
+const productA = { name: 'Tee', price: 20, effectivePrice: 20, image: 'tee.jpg' };
+const productB = { name: 'Hoodie', price: 50, effectivePrice: 50, image: 'hoodie.jpg' };
 
 describe('cart state', () => {
   it('addItem adds a new item defaulting quantity to 1', () => {

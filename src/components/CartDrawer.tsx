@@ -21,7 +21,7 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ open, onClose }) => {
   const cart = useStore((state) => state.cart);
   const { removeItem, updateQuantity } = useCart();
 
-  const total = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
+  const total = cart.reduce((sum, item) => sum + item.product.effectivePrice * item.quantity, 0);
 
   return (
     <Drawer

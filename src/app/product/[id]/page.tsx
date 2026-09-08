@@ -11,7 +11,7 @@ async function fetchProduct(id: string): Promise<Product | null> {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      query: `{ product(id: "${id}") { id sku name price images colors sizes details featured sale category } }`,
+      query: `{ product(id: "${id}") { id sku name price images colors sizes details featured sale discountPercent effectivePrice category } }`,
     }),
   });
   const json = await res.json();
@@ -42,7 +42,7 @@ export default async function Product(props: any) {
     <div className="pt-12">
       <div className="py-12 flex flex-col-reverse items-center justify-center gap-20 md:flex-row">
         <div>
-          {product.sale && (
+          {product.sale && (product.discountPercent ?? 0) > 0 && (
             <div className="rounded-lg mb-4 bg-wearit-red text-wearit-white w-[80px] p-1 text-center">
               {translate('sale')}
             </div>
@@ -68,13 +68,13 @@ export default async function Product(props: any) {
           <header>
             <h3>{product.name}</h3>
           </header>
-          {product.sale ? (
+          {product.sale && (product.discountPercent ?? 0) > 0 ? (
             <div className="flex gap-2">
               <p className="subtitle-1 text-neutral-500 line-through">
                 ${product.price}
               </p>
               <p className="subtitle-1 text-wearit-red">
-                ${(product.price - 5).toFixed(2)}
+                ${(product.effectivePrice ?? product.price).toFixed(2)}
               </p>
             </div>
           ) : (

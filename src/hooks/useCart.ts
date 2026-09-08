@@ -20,6 +20,7 @@ import type { CartItem } from '../services/models/cart';
 const toSnapshot = (product: Product): CartItem['product'] => ({
   name: product.name,
   price: product.price,
+  effectivePrice: product.effectivePrice ?? product.price,
   image: product.images[0] ?? '',
 });
 
@@ -47,7 +48,7 @@ export const enrichCart = async (
 
   return rawItems.map((item) => ({
     ...item,
-    product: cache.get(item.productId) ?? { name: '', price: 0, image: '' },
+    product: cache.get(item.productId) ?? { name: '', price: 0, effectivePrice: 0, image: '' },
   }));
 };
 

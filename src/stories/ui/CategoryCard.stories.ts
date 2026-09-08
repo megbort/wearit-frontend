@@ -20,7 +20,7 @@ export const Default: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await expect(canvas.getByText(CategoryMock.title)).toBeInTheDocument();
+    await expect(canvas.getByText('Shop New Arrivals')).toBeInTheDocument();
 
     const link = canvas.getByRole('link');
     await expect(link).toHaveAttribute('href', '/products');

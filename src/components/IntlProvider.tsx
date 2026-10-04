@@ -5,6 +5,7 @@ import { NextIntlClientProvider, type AbstractIntlMessages } from 'next-intl';
 
 const SUPPORTED_LOCALES = ['en', 'fr'] as const;
 type Locale = (typeof SUPPORTED_LOCALES)[number];
+const TIME_ZONE = 'UTC';
 
 function detectLocale(): Locale {
   const lang = navigator.language.toLowerCase();
@@ -42,7 +43,7 @@ export default function IntlProvider({
   }, []);
 
   return (
-    <NextIntlClientProvider locale={locale} messages={messages}>
+    <NextIntlClientProvider locale={locale} timeZone={TIME_ZONE} messages={messages}>
       {children}
     </NextIntlClientProvider>
   );

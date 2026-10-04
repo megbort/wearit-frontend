@@ -105,10 +105,10 @@ describe('errorLink UNAUTHENTICATED handling', () => {
     vi.restoreAllMocks();
   });
 
-  function run(link: ApolloLink, query = GET_ME, operationName = 'GetMe') {
+  function run(link: ApolloLink, query = GET_ME) {
     return new Promise((resolve, reject) => {
       const results: unknown[] = [];
-      ApolloLink.execute(link, { query, operationName }, { client: {} as never }).subscribe({
+      ApolloLink.execute(link, { query }, { client: {} as never }).subscribe({
         next: (value) => results.push(value),
         error: (err) => reject(Object.assign(err, { results })),
         complete: () => resolve(results),
@@ -198,7 +198,7 @@ describe('errorLink UNAUTHENTICATED handling', () => {
       return new Observable((observer) => observer.error(unauthenticatedError()));
     });
 
-    await expect(run(ApolloLink.from([errorLink, mockLink]), LOGIN, 'Login')).rejects.toBeInstanceOf(
+    await expect(run(ApolloLink.from([errorLink, mockLink]), LOGIN)).rejects.toBeInstanceOf(
       CombinedGraphQLErrors
     );
 

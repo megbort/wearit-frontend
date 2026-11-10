@@ -101,7 +101,7 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ open, onClose }) => {
 
           {/* Checkout Button (not wired up yet) */}
           <button
-            className="w-full bg-wearit-red hover:bg-wearit-pink text-white font-bold py-3 px-4 rounded transition-colors duration-200 mb-3 disabled:opacity-50"
+            className="w-full bg-wearit-red hover:bg-wearit-pink text-white font-bold py-3 px-4 rounded-sm transition-colors duration-200 mb-3 disabled:opacity-50"
             disabled
           >
             {translate('checkout')}

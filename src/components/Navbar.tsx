@@ -170,7 +170,7 @@ export default function Navbar() {
           </div>
 
           {/* Web Menu */}
-          <div className="hidden lg:flex gap-4 lg:gap-8 xl:gap-20 flex-grow justify-center items-center">
+          <div className="hidden lg:flex gap-4 lg:gap-8 xl:gap-20 grow justify-center items-center">
             <Link
               href={'/products'}
               className="title text-wearit-red hover:text-wearit-green"

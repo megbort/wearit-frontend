@@ -37,7 +37,7 @@ const CartLineItem: React.FC<CartLineItemProps> = ({
           fill
           sizes={`${THUMBNAIL_SIZE}px`}
           style={{ objectFit: 'cover' }}
-          className="rounded"
+          className="rounded-sm"
         />
       </div>
       <div className="flex-1 flex flex-col gap-1">

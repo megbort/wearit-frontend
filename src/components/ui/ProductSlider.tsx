@@ -48,7 +48,7 @@ export default function ProductSlider({ currentId }: Readonly<ProductSliderProps
         {Array.from({ length: 5 }, (_, index) => (
           <div
             key={index}
-            className="w-[140px] h-[120px] rounded-lg bg-neutral-200 dark:bg-zinc-700 animate-pulse flex-shrink-0"
+            className="w-[140px] h-[120px] rounded-lg bg-neutral-200 dark:bg-zinc-700 animate-pulse shrink-0"
           />
         ))}
       </div>

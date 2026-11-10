@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
-import './globals.scss';
+import './globals.css';
 import Navbar from '@/components/Navbar';
 import { Comfortaa } from 'next/font/google';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v16-appRouter';
 import Footer from '@/components/Footer';
 import GlobalToast from '@/components/GlobalToast';
 import { getMessages } from 'next-intl/server';
@@ -32,18 +33,20 @@ export default async function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={comfortaa.className}>
         <script dangerouslySetInnerHTML={{ __html: `if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark');` }} />
-        <ThemeProvider>
-          <IntlProvider initialLocale="en" initialMessages={messages}>
-            <AuthProvider>
-              <main className="h-full flex flex-col">
-                <Navbar />
-                <div className="flex-grow">{children}</div>
-                <Footer />
-                <GlobalToast />
-              </main>
-            </AuthProvider>
-          </IntlProvider>
-        </ThemeProvider>
+        <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+          <ThemeProvider>
+            <IntlProvider initialLocale="en" initialMessages={messages}>
+              <AuthProvider>
+                <main className="h-full flex flex-col">
+                  <Navbar />
+                  <div className="grow">{children}</div>
+                  <Footer />
+                  <GlobalToast />
+                </main>
+              </AuthProvider>
+            </IntlProvider>
+          </ThemeProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

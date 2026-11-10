@@ -1,0 +1,71 @@
+@layer theme, base, mui, components, utilities;
+
+@import 'tailwindcss';
+@import '@fortawesome/fontawesome-svg-core/styles.css' layer(base);
+@import 'slick-carousel/slick/slick.css' layer(base);
+@import 'slick-carousel/slick/slick-theme.css' layer(base);
+@import '../styles/typography.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-wearit-blue: #0070f3;
+  --color-wearit-green: #76dbbf;
+  --color-wearit-pink: #ff89c4;
+  --color-wearit-red: #ff3d5c;
+  --color-wearit-yellow: #ffc04d;
+  --color-wearit-black: #202020;
+  --color-wearit-white: #fafafa;
+  --color-wearit-grey: #ececec;
+  --color-wearit-grey-dark: #b4b4b4;
+  --color-wearit-grey-darker: #717171;
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    @apply box-border;
+  }
+
+  body {
+    @apply flex flex-col bg-wearit-white dark:bg-zinc-900 text-wearit-black dark:text-wearit-white;
+  }
+}
+
+/* Font Awesome 7 renders icons fixed-width by default; keep v6 auto width */
+:root {
+  --fa-width: auto;
+}
+
+html,
+body,
+#__next,
+main {
+  height: 100%;
+  margin: 0;
+}
+
+main {
+  @apply flex-1;
+}
+
+.slick-arrow.slick-prev::before,
+.slick-arrow.slick-next::before {
+  @apply text-wearit-red;
+}

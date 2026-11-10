@@ -54,14 +54,14 @@ export default async function Product(props: any) {
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
               style={{ objectFit: 'cover' }}
-              className="rounded"
+              className="rounded-sm"
             />
           </div>
           <div className="flex gap-4 pt-4">
-            <div className="bg-neutral-200 h-[75px] w-[75px] rounded"></div>
-            <div className="bg-neutral-200 h-[75px] w-[75px] rounded"></div>
-            <div className="bg-neutral-200 h-[75px] w-[75px] rounded"></div>
-            <div className="bg-neutral-200 h-[75px] w-[75px] rounded"></div>
+            <div className="bg-neutral-200 h-[75px] w-[75px] rounded-sm"></div>
+            <div className="bg-neutral-200 h-[75px] w-[75px] rounded-sm"></div>
+            <div className="bg-neutral-200 h-[75px] w-[75px] rounded-sm"></div>
+            <div className="bg-neutral-200 h-[75px] w-[75px] rounded-sm"></div>
           </div>
         </div>
         <div className="flex flex-col gap-4">

@@ -1,0 +1,29 @@
+@utility title {
+  @apply leading-6 font-bold text-lg tracking-wider;
+
+  @media (min-width: 1278px) {
+    @apply text-xl leading-7;
+  }
+}
+
+@utility subtitle-1 {
+  @apply leading-6 font-normal text-lg tracking-wider;
+}
+
+@utility text-body-1 {
+  @apply leading-5 font-normal text-base tracking-wider;
+}
+
+@utility text-caption {
+  @apply leading-5 font-bold text-xs tracking-wide;
+
+  @media (min-width: 1024px) {
+    @apply text-sm;
+  }
+}
+
+@layer base {
+  h3 {
+    @apply leading-8 font-normal text-3xl tracking-wide;
+  }
+}

@@ -20,7 +20,7 @@ export default function Home() {
           style={{ objectFit: 'cover' }}
           priority
         />
-        <div className="absolute top-10 left-1/2 md:top-1/4 md:left-3/4 transform -translate-x-1/2 translate-y-1/2 bg-stone-900/80 p-8 rounded w-[300px] md:w-[400px]">
+        <div className="absolute top-10 left-1/2 md:top-1/4 md:left-3/4 transform -translate-x-1/2 translate-y-1/2 bg-stone-900/80 p-8 rounded-sm w-[300px] md:w-[400px]">
           <h3 className="text-wearit-white">{translate('appTitle')}</h3>
           <p className="subtitle-1 text-wearit-white py-4">{translate('appSubtitle')}</p>
           <CustomButton variant="primary">{translate('downloadNow')}</CustomButton>

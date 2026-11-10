@@ -5,6 +5,7 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   ...(process.env.NODE_ENV === 'production' && { output: 'export' }),
+  agentRules: false,
   images: {
     loader: 'custom',
     loaderFile: './src/utils/custom-image-loader.ts',

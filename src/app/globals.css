@@ -2,8 +2,6 @@
 
 @import 'tailwindcss';
 @import '@fortawesome/fontawesome-svg-core/styles.css' layer(base);
-@import 'slick-carousel/slick/slick.css' layer(base);
-@import 'slick-carousel/slick/slick-theme.css' layer(base);
 @import '../styles/typography.css';
 
 @custom-variant dark (&:is(.dark *));

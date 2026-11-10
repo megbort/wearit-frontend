@@ -14,6 +14,11 @@
   @apply box-border;
 }
 
+// Font Awesome 7 renders icons fixed-width by default; keep v6 auto width
+:root {
+  --fa-width: auto;
+}
+
 html,
 body,
 #__next,

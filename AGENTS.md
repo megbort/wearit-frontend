@@ -34,7 +34,7 @@ Single Zustand store with persistence middleware. Holds the cart line items (`ca
 - Custom hooks wrapping Apollo + Zustand updates: `src/hooks/useAuth.ts` (`useLogin`, `useMe`, `useLogout`)
 
 ### Data Models (`src/services/models/`)
-- `Product` — id, name, price, imageUrl, colors[], sizes[], details[], featured, sale, category
+- `Product` — id, sku, name, price, images[], colors[], sizes[], details[]; optional: featured, sale, discountPercent, effectivePrice, category
 - `Category` / `CategoryType` enum — Pants, Tees, Sweaters, Shorts, Jackets
 
 ### Styling

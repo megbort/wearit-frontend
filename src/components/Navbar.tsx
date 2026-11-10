@@ -137,10 +137,10 @@ export default function Navbar() {
               anchorEl={mobileMenuAnchor}
               open={open}
               onClose={handleClose}
-              MenuListProps={{
-                'aria-labelledby': 'menu-button',
-              }}
               slotProps={{
+                list: {
+                  'aria-labelledby': 'menu-button',
+                },
                 paper: {
                   className: 'bg-wearit-white w-[200px]',
                 },

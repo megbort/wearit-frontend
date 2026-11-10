@@ -28,8 +28,10 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ open, onClose }) => {
       anchor="right"
       open={open}
       onClose={onClose}
-      PaperProps={{
-        className: 'w-full sm:w-[400px] bg-wearit-white dark:bg-zinc-900',
+      slotProps={{
+        paper: {
+          className: 'w-full sm:w-[400px] bg-wearit-white dark:bg-zinc-900',
+        },
       }}
     >
       <div className="flex flex-col h-full p-4">
